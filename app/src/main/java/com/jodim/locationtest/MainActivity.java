@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
         startService(intent);
 
-        LocalBroadcastManager.getInstance(this).registerReceiver(new ReceiverMainActivity(this), new IntentFilter("location"));
+        LocalBroadcastManager.getInstance(this).registerReceiver(new ReceiverMainActivity(this), new IntentFilter(MyLocationService.ACTION_LOCATION));
     }
 
     public void displayLocation(double latitude, double longitude, double altitude) {

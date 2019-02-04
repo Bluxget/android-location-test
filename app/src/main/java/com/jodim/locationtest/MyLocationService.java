@@ -11,7 +11,7 @@ import android.util.Log;
 
 public class MyLocationService extends Service {
 
-    private final String ACTION_LOCATION = "location";
+    public static String ACTION_LOCATION = "location";
 
     public MyLocationService() {
     }
