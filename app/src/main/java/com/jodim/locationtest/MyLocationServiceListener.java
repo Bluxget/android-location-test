@@ -14,7 +14,9 @@ public class MyLocationServiceListener implements LocationListener {
     }
 
     public void onLocationChanged(Location location) {
-        Log.d("location", location.toString());
+        //Log.d("location", location.toString());
+
+        this.service.notifyLocation(location);
 
         //this.activity.updateLocation(location);
     }

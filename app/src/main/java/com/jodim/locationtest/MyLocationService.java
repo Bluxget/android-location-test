@@ -40,9 +40,9 @@ public class MyLocationService extends Service {
     public void notifyLocation(Location location) {
         Intent intent = new Intent(ACTION_LOCATION);
 
-        intent.putExtra("provided", location.getProvider());
         intent.putExtra("latitude", location.getLatitude());
         intent.putExtra("longitude", location.getLongitude());
+        intent.putExtra("altitude", location.getAltitude());
 
         LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
     }
