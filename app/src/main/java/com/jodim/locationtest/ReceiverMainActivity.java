@@ -25,6 +25,8 @@ public class ReceiverMainActivity extends BroadcastReceiver {
                     this.activity.displaySensorTemperature(intent.getFloatExtra("degrees", 0));
                 } else if (intent.getStringExtra("type") == "light") {
                     this.activity.displaySensorLight(intent.getFloatExtra("lux", 0));
+                } else if (intent.getStringExtra("type") == "accelerometer") {
+                    this.activity.displaySensorAccelerometer(intent.getFloatExtra("x", 0), intent.getFloatExtra("y", 0), intent.getFloatExtra("z", 0));
                 }
 
                 break;

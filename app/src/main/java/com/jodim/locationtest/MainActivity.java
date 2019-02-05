@@ -75,4 +75,9 @@ public class MainActivity extends AppCompatActivity {
         final TextView textView = findViewById(R.id.light);
         textView.setText("Lumière : "+ lux);
     }
+
+    public void displaySensorAccelerometer(float accX, float accY, float accZ) {
+        final TextView accelerometer_text = findViewById(R.id.accelerometer);
+        accelerometer_text.setText("Acceleromètre : "+ accX +" "+ accY +" "+ accZ);
+    }
 }

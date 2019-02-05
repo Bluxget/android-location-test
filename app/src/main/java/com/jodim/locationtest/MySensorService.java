@@ -16,7 +16,7 @@ public class MySensorService extends Service {
 
     public final static String ACTION_SENSOR = "sensor";
 
-    private int[] sensors = {Sensor.TYPE_AMBIENT_TEMPERATURE, Sensor.TYPE_LIGHT};
+    private int[] sensors = {Sensor.TYPE_AMBIENT_TEMPERATURE, Sensor.TYPE_LIGHT, Sensor.TYPE_ACCELEROMETER};
 
     public MySensorService() {
     }
@@ -57,6 +57,12 @@ public class MySensorService extends Service {
             case Sensor.TYPE_LIGHT:
                 intent.putExtra("type", "light");
                 intent.putExtra("lux", event.values[0]);
+                break;
+            case Sensor.TYPE_ACCELEROMETER:
+                intent.putExtra("type", "accelerometer");
+                intent.putExtra("x", event.values[0]);
+                intent.putExtra("y", event.values[1]);
+                intent.putExtra("z", event.values[2]);
                 break;
         }
 
