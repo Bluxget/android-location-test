@@ -14,9 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <service
-            android:name=".MyLocationService"
+            android:name=".MySensorService"
             android:enabled="true"
             android:exported="true"></service>
+        <service
+            android:name=".MyLocationService"
+            android:enabled="true"
+            android:exported="true" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

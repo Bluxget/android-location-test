@@ -42,17 +42,17 @@ public class MainActivity extends AppCompatActivity {
             }
         }*/
 
-        Intent intent = new Intent(this, MyLocationService.class);
+        Intent location = new Intent(this, MyLocationService.class);
 
-        /*try {
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationServiceListener);
-        } catch(SecurityException ex) {
-            Log.e("location", ex.getMessage());
-        }*/
-
-        startService(intent);
+        startService(location);
 
         LocalBroadcastManager.getInstance(this).registerReceiver(new ReceiverMainActivity(this), new IntentFilter(MyLocationService.ACTION_LOCATION));
+
+        Intent intentSensor = new Intent(this, MySensorService.class);
+
+        startService(intentSensor);
+
+        LocalBroadcastManager.getInstance(this).registerReceiver(new ReceiverMainActivity(this), new IntentFilter(MySensorService.ACTION_SENSOR));
     }
 
     public void displayLocation(double latitude, double longitude, double altitude) {
