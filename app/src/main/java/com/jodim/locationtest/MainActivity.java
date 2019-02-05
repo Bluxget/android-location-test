@@ -65,4 +65,14 @@ public class MainActivity extends AppCompatActivity {
         final TextView altitude_text = findViewById(R.id.altitude);
         altitude_text.setText("Altitude : "+ altitude);
     }
+
+    public void displaySensorTemperature(float degrees) {
+        final TextView textView = findViewById(R.id.temperature);
+        textView.setText("Température : "+ degrees +" °C");
+    }
+
+    public void displaySensorLight(float lux) {
+        final TextView textView = findViewById(R.id.light);
+        textView.setText("Lumière : "+ lux);
+    }
 }

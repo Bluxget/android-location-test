@@ -18,12 +18,15 @@ public class ReceiverMainActivity extends BroadcastReceiver {
         switch (intent.getAction()) {
             case MyLocationService.ACTION_LOCATION:
                 this.activity.displayLocation(intent.getDoubleExtra("latitude", 0), intent.getDoubleExtra("longitude", 0), intent.getDoubleExtra("altitude", 0));
+
                 break;
-            case MySensorService.ACTION_SENSOR_TEMPERATURE:
-                this.activity.displaySensorTemperature(intent.getDoubleExtra("temperature", 0));
-                break;
-            case MySensorService.ACTION_SENSOR_LUX:
-                this.activity.displaySensorLux(intent.getDoubleExtra("lux", 0));
+            case MySensorService.ACTION_SENSOR:
+                if (intent.getStringExtra("type") == "temperature") {
+                    this.activity.displaySensorTemperature(intent.getFloatExtra("degrees", 0));
+                } else if (intent.getStringExtra("type") == "light") {
+                    this.activity.displaySensorLight(intent.getFloatExtra("lux", 0));
+                }
+
                 break;
         }
     }
