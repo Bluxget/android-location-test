@@ -14,7 +14,9 @@ import android.util.Log;
 
 public class MySensorService extends Service {
 
-    public final static String ACTION_SENSOR = "sensor";
+    public final static String ACTION_SENSOR_TEMPERATURE = "sensor_temperature";
+    public final static String ACTION_SENSOR_LIGHT = "sensor_light";
+    public final static String ACTION_SENSOR_ACCELEROMETER = "sensor_accelerometer";
 
     private int[] sensors = {Sensor.TYPE_AMBIENT_TEMPERATURE, Sensor.TYPE_LIGHT, Sensor.TYPE_ACCELEROMETER};
 
@@ -47,19 +49,19 @@ public class MySensorService extends Service {
     }
 
     public void notifySensor(SensorEvent event) {
-        Intent intent = new Intent(ACTION_SENSOR);
+        Intent intent = new Intent();
 
         switch (event.sensor.getType()) {
             case Sensor.TYPE_AMBIENT_TEMPERATURE:
-                intent.putExtra("type", "temperature");
+                intent.setAction(MySensorService.ACTION_SENSOR_TEMPERATURE);
                 intent.putExtra("degrees", event.values[0]);
                 break;
             case Sensor.TYPE_LIGHT:
-                intent.putExtra("type", "light");
+                intent.setAction(MySensorService.ACTION_SENSOR_LIGHT);
                 intent.putExtra("lux", event.values[0]);
                 break;
             case Sensor.TYPE_ACCELEROMETER:
-                intent.putExtra("type", "accelerometer");
+                intent.setAction(MySensorService.ACTION_SENSOR_ACCELEROMETER);
                 intent.putExtra("x", event.values[0]);
                 intent.putExtra("y", event.values[1]);
                 intent.putExtra("z", event.values[2]);

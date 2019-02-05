@@ -52,7 +52,15 @@ public class MainActivity extends AppCompatActivity {
 
         startService(intentSensor);
 
-        LocalBroadcastManager.getInstance(this).registerReceiver(new ReceiverMainActivity(this), new IntentFilter(MySensorService.ACTION_SENSOR));
+        String[] sensorFilter = { MySensorService.ACTION_SENSOR_TEMPERATURE, MySensorService.ACTION_SENSOR_LIGHT, MySensorService.ACTION_SENSOR_ACCELEROMETER };
+
+        IntentFilter sensorIntentFilter = new IntentFilter();
+
+        for(String action : sensorFilter) {
+            sensorIntentFilter.addAction(action);
+        }
+
+        LocalBroadcastManager.getInstance(this).registerReceiver(new ReceiverMainActivity(this), sensorIntentFilter);
     }
 
     public void displayLocation(double latitude, double longitude, double altitude) {

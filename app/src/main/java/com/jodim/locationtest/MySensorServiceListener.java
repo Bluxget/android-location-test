@@ -16,7 +16,7 @@ public class MySensorServiceListener implements SensorEventListener {
     }
 
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
-        Log.e("sensor", "Listener on "+ sensor.getName());
+        //Log.e("sensor", "Listener on "+ sensor.getName());
     }
 
     public void onSensorChanged(SensorEvent event) {
